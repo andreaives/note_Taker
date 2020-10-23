@@ -3,8 +3,7 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
-const PORT = process.env.PORT || 3001
-const UUIL = require("uuil")
+const PORT = process.env.PORT || 3000
 app.use(express.static(`public`))
 
 const path = require("path")
