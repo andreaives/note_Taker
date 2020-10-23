@@ -1,9 +1,13 @@
 
 
-var express = require("express");
-var fs = require("fs");
-var app = express();
-var PORT = process.env.PORT || 3001
+const express = require("express");
+const fs = require("fs");
+const app = express();
+const PORT = process.env.PORT || 3001
+const UUIL = require("uuil")
+app.use(express.static(`public`))
+
+const path = require("path")
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -17,4 +21,8 @@ res.json(path.join(___dirname, "./assets/index.html"))
 
 app.listen(PORT, () => {
  console.log(`listening at http://localhost:${PORT}`)
+})
+
+app.get("api/notes", (req, res) => {
+ res.sendFile(path.join(__dirname, "/db.json"))
 })
