@@ -14,3 +14,7 @@ app.use(express.json());
 app.get("/", function(req,res) {
 res.json(path.join(___dirname, "./assets/index.html"))
 })
+
+app.listen(PORT, () => {
+ console.log(`listening at http://localhost:${PORT}`)
+})
