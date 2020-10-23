@@ -12,5 +12,5 @@ app.use(express.json());
 
 /// node server js
 app.get("/", function(req,res) {
-res.json(path.join(___dirname, "../assets/js/index.html"))
-}
+res.json(path.join(___dirname, "./assets/index.html"))
+})
