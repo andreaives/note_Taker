@@ -18,4 +18,5 @@ app.use(express.json());
 
 // ================== Requiring in route pages==============================
 
-require("")
+require("./public/routes/apiRoutes")(app);
+require("./public/routes/htmlRoutes")(app);
