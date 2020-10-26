@@ -15,11 +15,11 @@ const PORT = process.env.PORT || 3000;
 
 
 //====================== Middle Layer ===========================
+app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api", apiRoutes);
 app.use("/", htmlRoutes)
-app.use(express.static("public"))
 
 // ===================== Listener ======================
 

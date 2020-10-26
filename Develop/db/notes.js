@@ -6,14 +6,14 @@ const uuidv1 = require("uuidv1")
 const writeFileAsync = util.promisify(fs.writeFile)
 const readFileAsync = util.promisify(fs.readFile)
 
+//====================== Notes Class w/ All Functions ==============
 
 class Notes{
-
 readNotes(){
- return readFileAsync("./db.json", "utf8")
+ return readFileAsync("db/db.json", "utf8")
 }
 writeNotes(data){
- return writeFileAsync("./db.json", JSON.stringify(data))
+ return writeFileAsync("db/db.json", JSON.stringify(data))
 }
 getNotes(){
  return this.readNotes()
@@ -32,11 +32,7 @@ getNotes(){
 }
 addNote(data){
  const {title, text} = data
- const newNote = {
-  title: title,
-  text: text,
-  id: uuidv1()
- }
+ const newNote = {title, text, id: uuidv1()}
  
  return this.getNotes()
  .then(data =>{
