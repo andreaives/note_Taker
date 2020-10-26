@@ -2,7 +2,7 @@
 //=========================== requiring in packages================ 
 const fs = require("fs")
 const util = require("util")
-const uuidv1 = require("uuid/v1")
+const uuidv1 = require("uuidv1")
 const writeFileAsync = util.promisify(fs.writeFile)
 const readFileAsync = util.promisify(fs.readFile)
 
@@ -18,6 +18,7 @@ writeNotes(data){
 getNotes(){
  return this.readNotes()
  .then(data => {
+  console.log(data)
   let parsedNotes;
   try{
    parsedNotes = [].concat(JSON.parse(data))
@@ -31,7 +32,6 @@ getNotes(){
 }
 addNote(data){
  const {title, text} = data
- 
  const newNote = {
   title: title,
   text: text,
@@ -46,6 +46,11 @@ addNote(data){
  }).then(() => {
   return newNote
  })
+}
+deleteNotes(id) {
+ return this.getNotes()
+ .then((remove) => remove.filter((deletedNotes) => deletedNotes.id !== id))
+ .then((filteredNotes)=> this.writeNotes(filteredNotes));
 }
 }
 

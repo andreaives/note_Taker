@@ -7,12 +7,12 @@ const router = require("express").Router()
 
  //show notes html
  router.get("/notes", function (req, res) {
-  res.sendFile(path.join(__dirname, "../html/notes.html"))
+  res.sendFile(path.join(__dirname, "../public/notes.html"))
  })
 
  //default to home page 
  router.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../html/index.html"))
+  res.sendFile(path.join(__dirname, "../public/index.html"))
  })
 
 
