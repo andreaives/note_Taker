@@ -23,7 +23,7 @@ router.post("/notes", function(req, res){
 
 //============================ Deletes Note Route ================================
 
-router.delete("/notes", function(req, res){
+router.delete("/notes/:id", function(req, res){
 notes.deleteNotes(req.params.id)
 .then(()=>
 res.json({ok: true}))

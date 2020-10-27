@@ -2,9 +2,9 @@
 //=========================== requiring in packages================ 
 const fs = require("fs")
 const util = require("util")
-const uuidv1 = require("uuidv1")
 const writeFileAsync = util.promisify(fs.writeFile)
 const readFileAsync = util.promisify(fs.readFile)
+const uuidv1 = require("uuidv1")
 
 //====================== Notes Class w/ All Functions ==============
 
@@ -31,13 +31,13 @@ getNotes(){
  })
 }
 addNote(data){
- const {title, text} = data
- const newNote = {title, text, id: uuidv1()}
+ const { title, text } = data
+ const newNote = { title, text, id: uuidv1()}
  
  return this.getNotes()
- .then(data =>{
+ .then((data) =>{
   return[...data, newNote]
- }).then(updatedNotes => {
+ }).then((updatedNotes) => {
   return this.writeNotes(updatedNotes)
  }).then(() => {
   return newNote
@@ -45,7 +45,7 @@ addNote(data){
 }
 deleteNotes(id) {
  return this.getNotes()
- .then((remove) => remove.filter((deletedNotes) => deletedNotes.id !== id))
+ .then((remove) => remove.filter((deletedNote) => deletedNote.id !== id))
  .then((filteredNotes)=> this.writeNotes(filteredNotes));
 }
 }
